@@ -21,6 +21,7 @@
 module.exports = {
     // the tcp port that the Node-RED web server is listening on
     uiPort: 1880,
+    haConfig: "../../../configuration.yaml",
 
     // By default, the Node-RED UI accepts connections on all IPv4 interfaces.
     // The following property can be used to listen on a specific interface. For
@@ -71,11 +72,11 @@ module.exports = {
     // By default, these are served relative to '/'. The following property
     // can be used to specifiy a different root path. If set to false, this is
     // disabled.
-    //httpNodeRoot: '/red-nodes',
+    //httpNodeRoot: '/nodered',
 
     // The following property can be used in place of 'httpAdminRoot' and 'httpNodeRoot',
     // to apply the same root to both parts.
-    //httpRoot: '/red',
+    httpRoot: '/nodered',
 
     // When httpAdminRoot is used to move the UI to a different root path, the
     // following property can be used to identify a directory of static content
@@ -94,6 +95,7 @@ module.exports = {
     //        permissions: "*"
     //    }]
     //},
+//    adminAuth:  require("./user-authentication") ,	
 
     // To password protect the node-defined HTTP endpoints (httpNodeRoot), or
     // the static content (httpStatic), the following properties can be used.
@@ -151,6 +153,7 @@ module.exports = {
     //    context.global.os
 
     functionGlobalContext: {
+	   fa:require('./farm-assistant-shim'), // Notify hass of node-red restarts/nodes loaded events
         // os:require('os'),
         // octalbonescript:require('octalbonescript'),
         // jfive:require("johnny-five"),
